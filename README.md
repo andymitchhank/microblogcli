@@ -1,5 +1,7 @@
 # Micro.Blog CLI
 
+This project is under construction. Things may change. Often. 
+
 ## Overview
 
 It is was it says it is. 
