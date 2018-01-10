@@ -37,8 +37,6 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
@@ -48,4 +46,9 @@ setup(
     tests_require=['coverage', 'pytest'],
 
     packages=find_packages(),
+    entry_points={
+        'console_scripts': [
+            'microblog = microblogcli.cli:cli',
+        ],
+    },
 )
