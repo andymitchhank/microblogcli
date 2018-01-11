@@ -9,6 +9,9 @@ name = "pypi"
 
 bessie = "*"
 click = "*"
+peewee = "*"
+colorama = "*"
+tabulate = "*"
 
 
 [dev-packages]
