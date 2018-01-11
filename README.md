@@ -32,7 +32,7 @@ $ microblog post <text>
 $ microblog post -t <title> <text>
 ```
 
-Post text to the current micro.blog account with an optional title.
+Post text to the current micro.blog account with an optional title. This is only available for hosted Micro.blog accounts for now. 
 
 ### feed 
 
