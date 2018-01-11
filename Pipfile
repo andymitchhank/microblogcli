@@ -12,6 +12,7 @@ click = "*"
 peewee = "*"
 colorama = "*"
 tabulate = "*"
+"beautifulsoup4" = "*"
 
 
 [dev-packages]
