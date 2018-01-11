@@ -7,9 +7,9 @@ endpoints = {
 		'account/signin': None,
 		'posts/favorites': None,
 		'posts/reply': None,
-		'users/follow': None,
-		'users/unfollow': None,
-		'micropub': None
+		'users/follow': ['username'],
+		'users/unfollow': ['username'],
+		'micropub': ['h', 'content']
 	},
 	'GET': {
 		'posts/all': None,
@@ -17,7 +17,9 @@ endpoints = {
 		'posts/favorites': None,
 		'posts/<username>': None,
 		'posts/conversation': ['id'],
-		'posts/check': ['since_id']
+		'posts/check': ['since_id'],
+		'users/is_following': ['username'],
+		'users/following/<username>': None
 	},
 	'DELETE': {
 		'posts/favorites/<id>': None,
@@ -27,6 +29,9 @@ endpoints = {
 
 available_endpoints = [Endpoint(method, path, params) for method, paths in endpoints.items()
 										   			  for path, params in paths.items()]
+
+
+class PostingError(Exception): pass
 
 
 class MicroBlogApi(BaseClient):
@@ -56,3 +61,56 @@ def create_post(token, content, title=None):
 		payload['name'] = title
 
 	r = mba.micropub.post(**payload)
+	if r.status_code != 200:
+		raise PostingError(r.text)
+
+
+def get_feed(token, limit):
+	mba = MicroBlogApi(token=token)
+
+	payload = {}
+
+	r = mba.posts.all.get(**payload)
+
+	if r.status_code == 200:
+		return r.json()['items']
+
+
+def follow(token, username):
+	mba = MicroBlogApi(token=token)
+
+	payload = {
+		'username': username
+	}
+
+	r = mba.users.follow.post(**payload)
+
+
+def unfollow(token, username):
+	mba = MicroBlogApi(token=token)
+
+	payload = {
+		'username': username
+	}
+
+	r = mba.users.unfollow.post(**payload)
+
+
+def is_following(token, username):
+	mba = MicroBlogApi(token=token)
+
+	payload = {
+		'username': username
+	}
+
+	r = mba.users.is_following.get(**payload)
+
+	return r.json()['is_following']
+
+
+def following(token, username):
+	mba = MicroBlogApi(token=token)
+
+	r = mba.users.following.username(username).get()
+
+	return r.json()
