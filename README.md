@@ -8,11 +8,15 @@ It is was it says it is.
 
 ## Available Commands 
 
-- [ ] [account](#account)
-- [ ] [post](#post)
+- [X] [account](#account)
+- [X] [post](#post)
 - [ ] [feed](#feed)
 - [ ] [conversation](#conversation)
 - [ ] [reply](#reply)
+- [X] [follow](#follow)
+- [X] [unfollow](#unfollow)
+- [X] [am_following](#am_following)
+- [X] [following](#following)
 
 ### account
 
@@ -63,4 +67,34 @@ $ microblog reply <id> <text>
 
 Reply to a specific post. If no post id is specified, uses the last post viewed from the feed.
 
+### follow
 
+```
+$ microblog follow <username>
+```
+
+Follow somebody
+
+### unfollow
+
+```
+$ microblog unfollow <username>
+```
+
+Unfollow somebody
+
+### am_following
+
+```
+$ microblog am_following <username>
+```
+
+Determine if you are following a specific user. 
+
+### following
+
+```
+$ microblog following <username>
+```
+
+Get a list of who a user is following. If no username is provided, defaults to current account. 
