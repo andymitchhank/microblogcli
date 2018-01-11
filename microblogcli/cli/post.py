@@ -5,7 +5,7 @@ from ..models import Account
 
 
 @click.command()
-@click.option('--title', default=None)
+@click.option('--title', '-t', default=None)
 @click.argument('content')
 def post(title, content):
 	""" Create a new post on your Micro.blog 
