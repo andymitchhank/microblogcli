@@ -6,6 +6,11 @@ This project is under construction. Things may change. Often.
 
 It is was it says it is. 
 
+## Todo
+
+- [ ] Tests!
+- [ ] Complete all commands below. 
+
 ## Available Commands 
 
 - [X] [account](#account)
