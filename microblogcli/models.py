@@ -46,6 +46,11 @@ class Account(BaseModel):
 		a = Account.get(Account.is_current)
 		return a.token
 
+	def current_username():
+		a = Account.get(Account.is_current)
+		return a.username
+
+
 
 def create_tables():
 	tables = [Account]
