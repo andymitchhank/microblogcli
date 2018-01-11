@@ -18,6 +18,7 @@ It is was it says it is.
 
 ```
 $ microblog account add <username>
+$ microblog account update <username>
 $ microblog account switch <username>
 $ microblog account list
 ```
