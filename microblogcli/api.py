@@ -1,6 +1,6 @@
 from bessie import BaseClient, Endpoint
 
-__all__ = ['MicroBlogApi']
+__all__ = ['create_post']
 
 endpoints = {
 	'POST': {
@@ -42,3 +42,21 @@ class MicroBlogApi(BaseClient):
 	def _create_request(self):
 		super()._create_request()
 		self.request.headers['Authorization'] = 'Token {}'.format(self.token)
+
+
+def create_post(token, content, title=None):
+	mba = MicroBlogApi(token=token)
+
+	payload = {
+		'h': 'entry',
+		'content': content
+	}
+
+	if title:
+		payload['name'] = title
+
+	r = mba.micropub.post(**payload)
+
+	print(r.text)
+
+
