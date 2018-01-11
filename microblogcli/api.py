@@ -56,7 +56,3 @@ def create_post(token, content, title=None):
 		payload['name'] = title
 
 	r = mba.micropub.post(**payload)
-
-	print(r.text)
-
-
